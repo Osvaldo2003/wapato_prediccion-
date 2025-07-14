@@ -7,9 +7,9 @@ export default function AdminAnalytics() {
   const [actions, setActions] = useState([]);
 
   useEffect(() => {
-    axios.get('/admin/analytics/churn-risk').then(r => setChurn(r.data));
-    axios.get('/admin/analytics/genre-popularity').then(r => setGenres(r.data));
-    axios.get('/admin/analytics/action-distribution').then(r => setActions(r.data));
+    axios.get('/admin/analytics/churn-risk').then(res => setChurn(res.data));
+    axios.get('/admin/analytics/genre-popularity').then(res => setGenres(res.data));
+    axios.get('/admin/analytics/action-distribution').then(res => setActions(res.data));
   }, []);
 
   return (
@@ -20,7 +20,13 @@ export default function AdminAnalytics() {
         <h2>Riesgo de Abandono</h2>
         <table border="1">
           <thead>
-            <tr><th>User ID</th><th>Username</th><th>Última Acción</th><th>Acciones Totales</th><th>Riesgo</th></tr>
+            <tr>
+              <th>User ID</th>
+              <th>Username</th>
+              <th>Última Acción</th>
+              <th>Acciones Totales</th>
+              <th>Riesgo</th>
+            </tr>
           </thead>
           <tbody>
             {churn.map(u => (
@@ -39,7 +45,12 @@ export default function AdminAnalytics() {
       <section>
         <h2>Popularidad de Géneros</h2>
         <table border="1">
-          <thead><tr><th>Género ID</th><th>Interacciones</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Género ID</th>
+              <th>Interacciones</th>
+            </tr>
+          </thead>
           <tbody>
             {genres.map(g => (
               <tr key={g.genero_id}>
@@ -54,7 +65,12 @@ export default function AdminAnalytics() {
       <section>
         <h2>Distribución de Acciones</h2>
         <table border="1">
-          <thead><tr><th>Acción</th><th>Total</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Acción</th>
+              <th>Total</th>
+            </tr>
+          </thead>
           <tbody>
             {actions.map(a => (
               <tr key={a.action}>

@@ -1,11 +1,12 @@
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('user_action_logs', {
       id: {
         type: Sequelize.BIGINT,
-        primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        primaryKey: true
       },
       user_id: {
         type: Sequelize.BIGINT,
@@ -26,7 +27,8 @@ module.exports = {
       }
     });
   },
-  down: async (queryInterface) => {
+
+  down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('user_action_logs');
   }
 };
